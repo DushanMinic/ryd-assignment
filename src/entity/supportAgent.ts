@@ -1,18 +1,18 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, DeleteDateColumn } from 'typeorm';
 
-@Entity({ name: 'issues' })
-export class Issue {
+@Entity({ name: 'supportAgents' })
+export class SupportAgent {
     @PrimaryGeneratedColumn('uuid')
     id: string;
 
-    @Column({ length: 100 })
-    title: string;
+    @Column({ length: 30 })
+    firstName: string;
 
-    @Column({ length: 500 })
-    description: string;
+    @Column({ length: 30 })
+    lastName: string;
 
     @Column({ default: false })
-    resolved: boolean;
+    available: boolean;
 
     @CreateDateColumn()
     createdAt: Date;

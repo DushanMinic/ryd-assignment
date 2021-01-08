@@ -1,5 +1,5 @@
 import { getRepository } from 'typeorm';
-import { Issue } from '../entity/Issue';
+import { Issue } from '../entity/issue';
 import { CreateIssueDTO } from './dto/create-issue.dto';
 
 export default class IssueService {
