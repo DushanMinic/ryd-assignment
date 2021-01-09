@@ -3,7 +3,7 @@
    "host": "localhost",
    "port": 5432,
    "database": "ryd-assignment",
-   "synchronize": true,
+   "synchronize": false,
    "logging": false,
    "entities": [
       "src/**/*.entity.ts"
