@@ -5,8 +5,8 @@ import {
     JoinColumn,
     Column,
 } from 'typeorm';
-import { Issue } from './issue';
-import { SupportAgent } from './supportAgent';
+import { Issue } from './issue.entity';
+import { SupportAgent } from '../../supportAgent/entity/supportAgent.entity';
 
 @Entity({ name: 'assignedIssues' })
 export class AssignedIssue {

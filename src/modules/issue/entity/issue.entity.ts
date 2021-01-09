@@ -1,5 +1,12 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, DeleteDateColumn } from 'typeorm';
-import { IssueStatus } from '../modules/issue/enum/issueStatus.enum';
+import {
+    Entity,
+    PrimaryGeneratedColumn,
+    Column,
+    CreateDateColumn,
+    UpdateDateColumn,
+    DeleteDateColumn,
+} from 'typeorm';
+import { IssueStatus } from '../enum/issueStatus.enum';
 
 @Entity({ name: 'issues' })
 export class Issue {
