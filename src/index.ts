@@ -26,3 +26,5 @@ application.use((error: Error, request: Request, response: Response, next: NextF
 application.listen(PORT, () => {
     console.log(`Server started listening at ${PORT}.`);
 });
+
+export default application;
