@@ -11,7 +11,7 @@ export class SupportAgent {
     @Column({ length: 30 })
     lastName: string;
 
-    @Column({ default: false })
+    @Column({ default: true })
     available: boolean;
 
     @CreateDateColumn()
