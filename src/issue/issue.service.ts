@@ -3,9 +3,15 @@ import { AssignedIssue } from '../entity/assignedIssues';
 import { Issue } from '../entity/issue';
 import { SupportAgent } from '../entity/supportAgent';
 import SupportAgentService from '../supportAgent/supportAgent.service';
+import AssignedIssueService from './assignedIssue.service';
 import { CreateIssueDTO } from './dto/create-issue.dto';
 
 export default class IssueService {
+    static async getAll(): Promise<Issue[]> {
+        const issueRepository = await getRepository(Issue);
+        return issueRepository.find();
+    }
+
     static async reportNewIssue(createIssueDTO: CreateIssueDTO): Promise<Issue> {
         const issue = new Issue();
         issue.title = createIssueDTO.title;
@@ -32,5 +38,28 @@ export default class IssueService {
             getRepository(AssignedIssue)
                 .save({ issue, supportAgent })
         ]);
+    }
+
+    static async resolveIssue(issueId: string) {
+        const issueRepository = await getRepository(Issue);
+        const issue = await issueRepository.findOne(issueId);
+
+        if (!issue) {
+            throw new Error(`Issue with id of ${issueId} does not exist.`);
+        }
+
+        if (issue.resolved) {
+            throw new Error(`Issue with id of ${issueId} has already been resolved.`);
+        }
+
+        const assignedIssue = await AssignedIssueService.removeIssue(issueId);
+
+        issue.resolved = true;
+        await Promise.all([
+            issueRepository.save(issue),
+            SupportAgentService.setAgentToAvailable(assignedIssue.supportAgentId),
+        ]);
+
+        return issue;
     }
 }

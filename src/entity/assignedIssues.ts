@@ -3,6 +3,7 @@ import {
     PrimaryGeneratedColumn,
     OneToOne,
     JoinColumn,
+    Column,
 } from 'typeorm';
 import { Issue } from './issue';
 import { SupportAgent } from './supportAgent';
@@ -19,4 +20,10 @@ export class AssignedIssue {
     @OneToOne(() => SupportAgent, { nullable: false })
     @JoinColumn()
     supportAgent: SupportAgent;
+
+    @Column()
+    supportAgentId: string;
+
+    @Column()
+    issueId: string;
 }

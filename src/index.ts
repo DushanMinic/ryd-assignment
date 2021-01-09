@@ -3,7 +3,6 @@ import express, { NextFunction, Request, Response } from 'express';
 import IssueController from './issue/issue.controller';
 import { createConnection } from 'typeorm';
 
-
 const PORT = 3000;
 
 const application = express();
@@ -21,8 +20,7 @@ application.use(express.json());
 application.use(IssueController);
 
 application.use((error: Error, request: Request, response: Response, next: NextFunction) => {
-    console.error(error.stack);
-    response.status(500).send(error);
+    response.status(400).send({ message: error.message });
 });
 
 application.listen(PORT, () => {

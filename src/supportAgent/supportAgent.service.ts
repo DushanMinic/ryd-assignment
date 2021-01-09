@@ -10,4 +10,12 @@ export default class SupportAgentService {
                 }
             });
     }
+
+    static async setAgentToAvailable(supportAgentId: string): Promise<void> {
+        await getRepository(SupportAgent)
+            .update(
+                { id: supportAgentId },
+                { available: true },
+            );
+    }
 }
