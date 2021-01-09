@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { getConnection, getRepository } from 'typeorm';
+import { getRepository } from 'typeorm';
 import { SupportAgent } from '../../../supportAgent/entity/supportAgent.entity';
 import { AssignedIssue } from '../../entity/assignedIssues.entity';
 import { Issue } from '../../entity/issue.entity';
@@ -12,8 +12,6 @@ describe('Resolve Issue tests', () => {
     let supportAgentRepository;
 
     before(async () => {
-        await getConnection().synchronize(true);
-
         const supportAgentEntity = new SupportAgent();
         supportAgentEntity.firstName = 'Nikola';
         supportAgentEntity.lastName = 'Tesla';
@@ -45,8 +43,11 @@ describe('Resolve Issue tests', () => {
         const supportAgentAfterIssue = await supportAgentRepository.findOne({ where: { id: supportAgent.id } });
         expect(supportAgentAfterIssue.available).to.equals(false);
 
-        const [assignedIssue] = await getRepository(AssignedIssue).find();
+        const [assignedIssue] = await getRepository(AssignedIssue).find({ supportAgentId: supportAgent.id });
         expect(assignedIssue.issueId).to.equals(secondUnresolvedIssue.id);
         expect(assignedIssue.supportAgentId).to.equals(supportAgent.id);
+
+        await getRepository(AssignedIssue).delete({ issueId: secondUnresolvedIssue.id });
+        await getRepository(Issue).delete({ id: secondUnresolvedIssue.id });
     });
 });

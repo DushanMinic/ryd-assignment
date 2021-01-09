@@ -1,8 +1,8 @@
 # ryd assignment - Node.js/TypeScript/Express/TypeOrm
 
-Steps to run this project:
+To run this project, run `docker-compose up` command (this will run migrations and then start the app)
 
-1. Run `docker-compose up` command (this will run migrations and then start the app)
+To run tests, type `docker-compose run --rm app npm test`.
 
 In this project you can:
 

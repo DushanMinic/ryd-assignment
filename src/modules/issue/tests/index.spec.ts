@@ -3,7 +3,7 @@ import { createConnection, getConnection } from 'typeorm';
 import application from '../../../index';
 
 before(async () => {
-    await (await createConnection()).synchronize(true);
+    await createConnection();
 });
 
 export const request = supertest(application);
