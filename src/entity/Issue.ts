@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, DeleteDateColumn } from 'typeorm';
-import { IssueStatus } from '../issue/enum/issueStatus.enum';
+import { IssueStatus } from '../modules/issue/enum/issueStatus.enum';
 
 @Entity({ name: 'issues' })
 export class Issue {

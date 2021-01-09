@@ -1,6 +1,6 @@
 import Express, { Request, Response } from 'express';
-import { Issue } from '../entity/issue';
-import HandleError from '../middleware/errorHandling';
+import { Issue } from '../../entity/issue';
+import HandleError from '../../middleware/errorHandling';
 import IssueService from './issue.service';
 
 const Router = Express.Router();

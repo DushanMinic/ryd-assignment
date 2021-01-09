@@ -1,5 +1,5 @@
 import { getRepository } from 'typeorm';
-import { Issue } from '../entity/issue';
+import { Issue } from '../../entity/issue';
 import SupportAgentService from '../supportAgent/supportAgent.service';
 import AssignedIssueService from './assignedIssue.service';
 import { CreateIssueDTO } from './dto/create-issue.dto';

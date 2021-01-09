@@ -1,7 +1,7 @@
 import { getRepository } from 'typeorm';
-import { AssignedIssue } from '../entity/assignedIssues';
-import { Issue } from '../entity/issue';
-import { SupportAgent } from '../entity/supportAgent';
+import { AssignedIssue } from '../../entity/assignedIssues';
+import { Issue } from '../../entity/issue';
+import { SupportAgent } from '../../entity/supportAgent';
 import AssignedIssueService from '../issue/assignedIssue.service';
 import IssueService from '../issue/issue.service';
 

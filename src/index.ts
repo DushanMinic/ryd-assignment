@@ -1,6 +1,6 @@
 import "reflect-metadata";
 import express, { NextFunction, Request, Response } from 'express';
-import IssueController from './issue/issue.controller';
+import IssueController from './modules/issue/issue.controller';
 import { createConnection } from 'typeorm';
 
 const PORT = 3000;
